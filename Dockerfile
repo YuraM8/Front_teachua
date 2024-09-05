@@ -1,0 +1,37 @@
+# Use the official Node.js 16 image as the base image
+FROM node:16 as builder
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code to the working directory
+COPY . .
+
+# Build the React app
+RUN npm run build
+RUN ls -la /app/build && sleep 30
+
+# Stage 2: Serve the app using Nginx
+FROM nginx:1.21-alpine
+
+WORKDIR /usr/share/nginx/html
+
+RUN rm -rf ./*
+
+# Copy the built app from the previous stage to Nginx's web directory
+
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=builder /app/build /usr/share/nginx/html
+RUN ls -la /usr/share/nginx/html && sleep 30
+
+# Expose the port that Nginx will run on
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
