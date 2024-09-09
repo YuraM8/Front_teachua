@@ -26,9 +26,8 @@ RUN rm -rf ./*
 
 # Copy the built app from the previous stage to Nginx's web directory
 
-COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /app/build /usr/share/nginx/html
-RUN ls -la /usr/share/nginx/html && sleep 30
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Expose the port that Nginx will run on
 EXPOSE 80
