@@ -14,8 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the React app
-RUN npm run build
-RUN ls -la /app/build && sleep 30
+RUN REACT_APP_ROOT_SERVER=/api npm run build
 
 # Stage 2: Serve the app using Nginx
 FROM nginx:1.21-alpine
