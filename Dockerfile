@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the React app
-RUN REACT_APP_ROOT_SERVER=http://192.168.42.2:30000 npm run build
+RUN REACT_APP_ROOT_SERVER=http://192.168.49.2:30000 npm run build
 
 # Stage 2: Serve the app using Nginx
 FROM nginx:1.21-alpine
