@@ -13,7 +13,7 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-ENV REACT_APP_ROOT_SERVER=http://192.168.49.2:30000
+ENV REACT_APP_ROOT_SERVER=${REACT_APP_ROOT_SERVER}
 # Build the React app
 RUN npm run build
 
