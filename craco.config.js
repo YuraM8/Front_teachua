@@ -19,16 +19,4 @@ module.exports = {
             },
         },
     ],
-    babel: {
-        plugins: [
-            ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }] // для імпорту Ant Design з підтримкою стилів
-        ],
-    },
-    jest: {
-        configure: {
-            transformIgnorePatterns: [
-                '/node_modules/(?!antd)', // Додаємо Ant Design для Jest
-            ],
-        },
-    },
 };
