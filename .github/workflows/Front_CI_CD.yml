@@ -28,7 +28,8 @@ jobs:
           REACT_APP_ROOT_URI: "http://localhost:8080"
 
       - name: Run tests
-        run: npm test 
+        run: |
+          NODE_OPTIONS="--experimental-vm-modules" npm test
 
   docker:
     needs: build
