@@ -45,9 +45,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build \
-           --build-arg REACT_APP_ROOT_SERVER=${{ secrets.REACT_APP_ROOT_SERVER }} \
-           -t ghcr.io/yuram8/teachua-frontend:latest .
+          docker build -t ghcr.io/yuram8/teachua-frontend:latest .
 
       - name: Push Docker image to GitHub Container Registry
         run: |
