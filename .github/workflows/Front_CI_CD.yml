@@ -21,6 +21,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Babel for Jest
+        run: |
+          npm install --save-dev babel-jest @babel/preset-env @babel/preset-react
+
       - name: Build front-end
         run: |
           CI=false npm run build
