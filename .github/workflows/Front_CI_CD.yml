@@ -24,6 +24,8 @@ jobs:
       - name: Build front-end
         run: |
           CI=false npm run build
+        env:
+          REACT_APP_ROOT_URI: "http://localhost:8080"
 
       - name: Run tests
         run: npm test || true
