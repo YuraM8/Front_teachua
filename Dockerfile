@@ -13,6 +13,7 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
+ENV REACT_APP_ROOT_SERVER=http://frontend-service
 # Build the React app
 RUN npm run build
 
