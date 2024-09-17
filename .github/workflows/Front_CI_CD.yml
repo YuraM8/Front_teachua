@@ -28,7 +28,7 @@ jobs:
           REACT_APP_ROOT_URI: "http://localhost:8080"
 
       - name: Run tests
-        run: npm test || true
+        run: npm test 
 
   docker:
     needs: build
