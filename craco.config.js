@@ -19,5 +19,13 @@ module.exports = {
             },
         },
     ],
+    jest: {
+        configure: {
+            transform: {
+                '^.+\\.(js|jsx)$': 'babel-jest',
+            },
+            transformIgnorePatterns: ['<rootDir>/node_modules/(?!antd)'], 
+        },
+    },
 };
 
