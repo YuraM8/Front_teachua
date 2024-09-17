@@ -24,8 +24,6 @@ jobs:
       - name: Build front-end
         run: |
           CI=false npm run build
-        env:
-          REACT_APP_ROOT_SERVER: ${{ secrets.REACT_APP_ROOT_SERVER }}
 
       - name: Run tests
         run: npm test || true
@@ -47,7 +45,9 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/yuram8/teachua-frontend:latest .
+          docker build \
+           --build-arg REACT_APP_ROOT_SERVER=${{ secrets.REACT_APP_ROOT_SERVER }} \
+           -t ghcr.io/yuram8/teachua-frontend:latest .
 
       - name: Push Docker image to GitHub Container Registry
         run: |
