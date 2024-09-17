@@ -24,6 +24,8 @@ jobs:
       - name: Build front-end
         run: |
           CI=false npm run build
+        env:
+          REACT_APP_ROOT_SERVER: ${{ secrets.REACT_APP_ROOT_SERVER }}
 
       - name: Run tests
         run: npm test || true
